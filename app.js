@@ -87,6 +87,29 @@ document.addEventListener('DOMContentLoaded', () => {
       amortTableBody.innerHTML = scheduleRows;
     }
 
+    // Stress Test Euribor (+1% and +2% scenarios)
+    const stressBody = document.getElementById('stressTestBody');
+    if (stressBody) {
+      const scenarios = [
+        { label: 'Escenario Actual', badge: 'badge-base', rate: annualRate },
+        { label: 'Tensión Moderada (+1,00%)', badge: 'badge-mod', rate: annualRate + 1.0 },
+        { label: 'Tensión Severa (+2,00%)', badge: 'badge-sev', rate: annualRate + 2.0 }
+      ];
+      stressBody.innerHTML = scenarios.map(sc => {
+        const sr = (sc.rate / 100) / 12;
+        const sm = (P * (sr * Math.pow(1 + sr, n))) / (Math.pow(1 + sr, n) - 1);
+        const diff = sm - monthlyPayment;
+        const minNetSalary = sm / 0.35;
+        return `<tr>
+          <td><span class="badge-scenario ${sc.badge}">${sc.label}</span></td>
+          <td><strong>${sc.rate.toFixed(2)}%</strong></td>
+          <td><strong>${formatEur(sm)}/mes</strong></td>
+          <td>${diff > 0 ? '+' + formatEur(diff) + '/mes' : 'Base'}</td>
+          <td>${formatEur(minNetSalary)}/mes netos</td>
+        </tr>`;
+      }).join('');
+    }
+
     calculateAmortizationComparison(P, annualRate, years, monthlyPayment, totalInterest);
     if (window.enterpriseTrack) {
       window.enterpriseTrack('mortgage_calculated', { amount: P, rate: annualRate, years: years });

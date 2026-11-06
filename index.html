@@ -4,23 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulador de Hipotecas y Calculadora de Amortización 2026 | Hipotecalia</title>
-  <meta name="description" content="Simula tu cuota hipotecaria mensual, compara ahorro en amortización anticipada reduciendo cuota o plazo y estima impuestos de compraventa con desglose analítico fundamentado.">
+  <meta name="description" content="Simula tu cuota hipotecaria mensual, compara ahorro en amortización anticipada reduciendo cuota o plazo, test de estrés Euribor e impuestos de compraventa.">
+  <meta name="enterprise-site-slug" content="hipotecalia">
   <link rel="canonical" href="https://sergiosanles2000.github.io/hipotecalia-app/index.html">
   
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sergiosanles2000.github.io/hipotecalia-app/index.html">
   <meta property="og:title" content="Simulador de Hipotecas y Calculadora de Amortización 2026 | Hipotecalia">
-  <meta property="og:description" content="Simula tu cuota hipotecaria mensual, compara ahorro en amortización anticipada reduciendo cuota o plazo y estima impuestos de compraventa con desglose analítico fundamentado.">
+  <meta property="og:description" content="Simula tu cuota hipotecaria mensual, compara ahorro en amortización anticipada reduciendo cuota o plazo, test de estrés Euribor e impuestos de compraventa.">
   <meta property="og:site_name" content="Hipotecalia">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Simulador de Hipotecas y Calculadora de Amortización 2026">
-  <meta name="twitter:description" content="Simula tu cuota hipotecaria mensual, compara ahorro en amortización anticipada reduciendo cuota o plazo y estima impuestos de compraventa con desglose analítico fundamentado.">
+  <meta name="twitter:description" content="Simula tu cuota hipotecaria mensual, compara ahorro en amortización anticipada reduciendo cuota o plazo, test de estrés Euribor e impuestos de compraventa.">
 
-  <!-- Google AdSense Tag placeholder (Ready to activate upon publisher approval) -->
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script> -->
+  <!-- Google Consent Mode v2 (RGPD / ePrivacy: Default denied before explicit user action) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+  </script>
+  <!-- Google Analytics 4 (gtag.js): Preparado para activacion via core/analytics_config.json o GA_MEASUREMENT_ID -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+
+  <!-- Google AdSense: Listo para activacion tras aprobacion de la cuenta -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
 
   <link rel="stylesheet" href="style.css">
   
@@ -37,7 +53,7 @@
     "price": "0",
     "priceCurrency": "EUR"
   },
-  "description": "Calculadora avanzada de hipotecas, simulador de amortización anticipada (cuota vs plazo) y desglose de gastos de compraventa en España."
+  "description": "Calculadora avanzada de hipotecas, simulador de amortización anticipada (cuota vs plazo), test de estrés Euribor y desglose de gastos de compraventa en España."
 }
   </script>
   <script type="application/ld+json">
@@ -68,6 +84,14 @@
         "@type": "Answer",
         "text": "La TAE refleja el coste real anual del préstamo sumando el TIN, comisiones y seguros vinculados, permitiendo una comparación objetiva entre bancos."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo cambiar mi hipoteca variable a fija mediante subrogación o novación?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, mediante novación con tu banco o subrogación de acreedor a otra entidad financiera con comisiones limitadas por la Ley 5/2019."
+      }
     }
   ]
 }
@@ -84,7 +108,7 @@
         <span class="brand-badge">Finanzas & Hipotecas</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#mortgage-form">Simulador Cuota</a></li><li><a href="#amort-form">Amortización Anticipada</a></li><li><a href="#propertyPrice">Gastos Compra</a></li><li><a href="#editorial-guide">Guía Experta</a></li>
+        <li><a href="#mortgage-form">Simulador Cuota</a></li><li><a href="#amortExtra">Amortización</a></li><li><a href="#propertyPrice">Gastos Compra</a></li><li><a href="#stress-test-section">Test Estrés</a></li><li><a href="#editorial-guide">Guía Experta</a></li>
         <li>
           <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema de color">
             🌓 Tema
@@ -97,10 +121,10 @@
   <!-- Main Content Area -->
   <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
     
-        <div class="ad-slot-wrapper">
+        <div class="ad-slot-wrapper ad-slot-header-wrapper" role="region" aria-label="Espacio publicitario superior">
           <span class="ad-label">Publicidad</span>
           <div class="ad-slot ad-slot-leaderboard" data-slot="header-leaderboard">
-            <span>Espacio Publicitario Disponible &bull; Formato Leaderboard 728x90 / Responsive</span>
+            <span class="ad-placeholder-text">Espacio Publicitario Disponible &bull; Formato Leaderboard Responsivo 728x90 / 320x100</span>
           </div>
         </div>
         
@@ -196,6 +220,35 @@
       </div>
     </div>
 
+    
+    <!-- Commercial Affiliate Integration (CPL / CPA Non-Intrusive Partner Card) -->
+    <section class="affiliate-card" id="partners-recommendation" role="region" aria-label="Recomendación de servicios profesionales">
+      <div class="affiliate-header">
+        <span class="affiliate-badge">Estudio Hipotecario Gratuito (CPL)</span>
+        <span class="affiliate-disclosure-badge">Colaboración Patrocinada</span>
+      </div>
+      <div class="affiliate-body">
+        <h3 class="affiliate-title">Compara Ofertas Vinculantes (FEIN) en más de 20 Bancos sin Comisiones</h3>
+        <p class="affiliate-desc">Un intermediario de crédito inmobiliario registrado en el Banco de España negocia por ti tipos fijos y mixtos por debajo de las ofertas de ventanilla.</p>
+        
+        <div class="affiliate-partners">
+          <span class="affiliate-partners-label">Entidades colaboradoras:</span>
+          <div class="affiliate-partner-tags"><span class="partner-tag">Brókers Registrados BdE</span><span class="partner-tag">Tasadoras Homologadas</span><span class="partner-tag">Banca Nacional</span></div>
+        </div>
+        
+        <div class="affiliate-cta-box">
+          <a href="#mortgage-form" class="btn-affiliate" target="_blank" rel="sponsored nofollow noopener">
+            Solicitar Estudio de Viabilidad Gratis &rarr;
+          </a>
+          <span class="affiliate-cta-subtext">Servicio 100% online y sin compromiso • Supervisado según Ley 5/2019</span>
+        </div>
+      </div>
+      <div class="affiliate-footer">
+        <p class="affiliate-legal-note">Información transparente: Hipotecalia ofrece simulaciones independientes y puede recibir compensación de intermediarios registrados sin sobrecoste para el usuario.</p>
+      </div>
+    </section>
+    
+
     <!-- Section 2: Amortization Optimizer -->
     <div class="card" style="margin-bottom: 3rem;">
       <div class="card-header">
@@ -279,10 +332,44 @@
       <p class="form-help">Nota: Por ley (Ley de Crédito Inmobiliario 5/2019), el banco asume los gastos de la hipoteca (Notaría hipotecaria, Registro, Gestoría y AJD del préstamo). El comprador solo abona los gastos directos de la compraventa y la tasación tasadora.</p>
     </div>
 
+    <!-- Section 3.5: Stress Test Euribor & Ratio de Endeudamiento -->
+    <div class="card" style="margin-bottom: 3rem;" id="stress-test-section">
+      <div class="card-header">
+        <h2 class="card-title">4. Test de Estrés Hipotecario (Subidas del Euribor y Salario Neto Requerido)</h2>
+        <p class="card-subtitle">Simulación de resistencia financiera ante alzas de tipos de +1% y +2% según criterios del Banco de España (ratio máx. 35%).</p>
+      </div>
+      <div class="table-responsive">
+        <table class="stress-matrix">
+          <thead>
+            <tr>
+              <th>Escenario de Tipos</th>
+              <th>TIN Aplicado</th>
+              <th>Cuota Mensual</th>
+              <th>Impacto Mensual</th>
+              <th>Ingresos Netos Mínimos (Ratio 35%)</th>
+            </tr>
+          </thead>
+          <tbody id="stressTestBody">
+            <!-- Populated dynamically via JS -->
+          </tbody>
+        </table>
+      </div>
+      <div class="context-crosslink-card">
+        <div class="context-crosslink-content">
+          <strong>💼 ¿Conoces tu Salario Neto Mensual exacto tras retenciones de IRPF 2026?</strong>
+          <p>Los departamentos de riesgos bancarios calculan tu viabilidad sobre tu nómina neta real o tu rendimiento neto si eres autónomo.</p>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <a href="https://sergiosanles2000.github.io/calcula-tu-salario/" class="context-crosslink-btn">Calcular Sueldo Neto &rarr;</a>
+          <a href="https://sergiosanles2000.github.io/cuotaautonomos-app/" class="context-crosslink-btn" style="background: var(--text-main);">Simular Neto Autónomos &rarr;</a>
+        </div>
+      </div>
+    </div>
+
     <!-- Section 4: Annual Amortization Table -->
     <div class="card" style="margin-bottom: 3rem;">
       <div class="card-header">
-        <h2 class="card-title">Cuadro de Amortización Anual Detallado</h2>
+        <h2 class="card-title">5. Cuadro de Amortización Anual Detallado</h2>
         <p class="card-subtitle">Evolución anual de capital e intereses abonados a lo largo del préstamo.</p>
       </div>
       <div class="table-responsive">
@@ -304,7 +391,7 @@
     </div>
 
     <!-- Section 5: Authoritative Editorial Guide -->
-    <article class="editorial-section">
+    <article class="editorial-section" id="editorial-guide">
       <h2>Guía Completa para Entender y Contratar una Hipoteca en 2026</h2>
       
       <p>Contratar un préstamo hipotecario es probablemente la decisión financiera más relevante en la vida de una persona o familia. Comprender cómo funciona el <strong>sistema de amortización francés</strong>, el impacto real de las subidas del Euribor y los costes asociados es crucial para evitar sobrecostes que pueden ascender a decenas de miles de euros.</p>
@@ -411,6 +498,16 @@
             <p>El <strong>TIN (Tipo de Interés Nominal)</strong> es simplemente el porcentaje que cobra el banco por prestarte el dinero. La <strong>TAE (Tasa Anual Equivalente)</strong>, en cambio, incluye el TIN más todas las comisiones de apertura, gastos asociados y el coste de todos los productos vinculados (seguros obligatorios o bonificados, tarjetas). La TAE refleja el <em>coste real global de la hipoteca</em> y es la única cifra que permite comparar ofertas bancarias de forma homogénea.</p>
           </div>
         </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Puedo cambiar mi hipoteca variable a fija mediante subrogación o novación?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sí. Puedes pactar una <strong>novación</strong> con tu propio banco o realizar una <strong>subrogación de acreedor</strong> trasladando tu hipoteca a otra entidad que ofrezca un tipo fijo o mixto más competitivo. La Ley Hipotecaria limita drásticamente las comisiones por cambio de variable a fijo, haciendo que el ahorro en intereses compense los reducidos costes de nueva tasación.</p>
+          </div>
+        </div>
       </div>
     </section>
     
@@ -419,6 +516,66 @@
   <!-- Site Footer -->
   <footer class="site-footer">
     <div class="container">
+      
+      <!-- Strategic Cross-Linking Network (Ecosistema de Herramientas Gratuitas) -->
+      <div class="footer-network" role="navigation" aria-label="Red de calculadoras especializadas">
+        <div class="footer-network-header">
+          <div class="footer-network-title">🌐 Ecosistema Digital de Calculadoras y Simuladores Oficiales</div>
+          <p class="footer-network-subtitle">Herramientas financieras, laborales, fiscales y de salud de acceso libre y cálculo instantáneo en tu navegador.</p>
+        </div>
+        <div class="network-grid">
+          <a href="index.html" class="network-card is-current" title="Hipotecalia - Simulador de hipotecas, cuadro de amortización francés y gastos de compraventa.">
+            <div>
+              <div class="network-card-top">
+                <span class="network-card-brand"><span>🏠</span> Hipotecalia</span>
+                <span class="network-card-tag">Portal Actual</span>
+              </div>
+              <p class="network-card-desc">Simulador de hipotecas, cuadro de amortización francés y gastos de compraventa.</p>
+            </div>
+            <span class="network-card-action">Estás aquí</span>
+          </a>
+          <a href="https://sergiosanles2000.github.io/calcula-tu-salario/" class="network-card" title="CalculaTuSalario - Calculadora de sueldo bruto a neto en 12/14 pagas, tramos IRPF 2026 y coste empresa.">
+            <div>
+              <div class="network-card-top">
+                <span class="network-card-brand"><span>💼</span> CalculaTuSalario</span>
+                <span class="network-card-tag">Nóminas & IRPF</span>
+              </div>
+              <p class="network-card-desc">Calculadora de sueldo bruto a neto en 12/14 pagas, tramos IRPF 2026 y coste empresa.</p>
+            </div>
+            <span class="network-card-action">Abrir calculadora &rarr;</span>
+          </a>
+          <a href="https://sergiosanles2000.github.io/indemnicalc-app/" class="network-card" title="IndemniCalc - Cálculo legal de indemnización por despido, salario diario oficial y liquidación de finiquito.">
+            <div>
+              <div class="network-card-top">
+                <span class="network-card-brand"><span>⚖️</span> IndemniCalc</span>
+                <span class="network-card-tag">Derecho Laboral</span>
+              </div>
+              <p class="network-card-desc">Cálculo legal de indemnización por despido, salario diario oficial y liquidación de finiquito.</p>
+            </div>
+            <span class="network-card-action">Abrir calculadora &rarr;</span>
+          </a>
+          <a href="https://sergiosanles2000.github.io/cuotaautonomos-app/" class="network-card" title="CuotaAutónomos - Simulador oficial de cuotas por ingresos reales (RDL 13/2022) y regularización TGSS.">
+            <div>
+              <div class="network-card-top">
+                <span class="network-card-brand"><span>📊</span> CuotaAutónomos</span>
+                <span class="network-card-tag">Autónomos RETA</span>
+              </div>
+              <p class="network-card-desc">Simulador oficial de cuotas por ingresos reales (RDL 13/2022) y regularización TGSS.</p>
+            </div>
+            <span class="network-card-action">Abrir calculadora &rarr;</span>
+          </a>
+          <a href="https://sergiosanles2000.github.io/macronutri-calc/" class="network-card" title="MacroNutri - Calculadora científica de gasto calórico TDEE, déficit energético y reparto de macronutrientes.">
+            <div>
+              <div class="network-card-top">
+                <span class="network-card-brand"><span>🥗</span> MacroNutri</span>
+                <span class="network-card-tag">Salud & Ciencia</span>
+              </div>
+              <p class="network-card-desc">Calculadora científica de gasto calórico TDEE, déficit energético y reparto de macronutrientes.</p>
+            </div>
+            <span class="network-card-action">Abrir calculadora &rarr;</span>
+          </a>
+        </div>
+      </div>
       <div class="footer-grid">
         <div class="footer-col">
           <h4>Hipotecalia</h4>
@@ -428,7 +585,7 @@
         <div class="footer-col">
           <h4>Herramientas</h4>
           <ul class="footer-links">
-            <li><a href="#mortgage-form">Simulador Cuota</a></li><li><a href="#amort-form">Amortización Anticipada</a></li><li><a href="#propertyPrice">Gastos Compra</a></li><li><a href="#editorial-guide">Guía Experta</a></li>
+            <li><a href="#mortgage-form">Simulador Cuota</a></li><li><a href="#amortExtra">Amortización</a></li><li><a href="#propertyPrice">Gastos Compra</a></li><li><a href="#stress-test-section">Test Estrés</a></li><li><a href="#editorial-guide">Guía Experta</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -457,6 +614,21 @@
       <button id="cookie-reject" class="btn-cookie">Rechazar no esenciales</button>
     </div>
   </div>
+
+  
+  <!-- Sticky Bottom Anchor Ad (Better Ads Standards: dismissible, height < 30% viewport) -->
+  <div id="sticky-bottom-ad" class="ad-sticky-container" role="region" aria-label="Anuncio fijo inferior" style="display: none;">
+    <div class="ad-sticky-inner">
+      <div class="ad-sticky-header">
+        <span class="ad-label">Publicidad</span>
+        <button id="close-sticky-ad" class="ad-sticky-close" aria-label="Cerrar anuncio">&times;</button>
+      </div>
+      <div class="ad-slot ad-slot-sticky" data-slot="sticky-anchor">
+        <span class="ad-placeholder-text">Anuncio Fijo Inferior &bull; Formato Anchor Responsivo</span>
+      </div>
+    </div>
+  </div>
+        
 
   <script src="common.js"></script>
   <script src="app.js"></script>
