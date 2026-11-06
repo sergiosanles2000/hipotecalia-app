@@ -121,8 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const ratio = (r * newP) / currentM;
       if (ratio < 1) {
         const newN = -Math.log(1 - ratio) / Math.log(1 + r);
-        const newYears = Math.floor(newN / 12);
-        const newMonths = Math.round(newN % 12);
+        const totalNewMonths = Math.round(newN);
+        const newYears = Math.floor(totalNewMonths / 12);
+        const newMonths = totalNewMonths % 12;
         const newTotalPaid = (currentM * newN) + extra;
         const newTotalInt = newTotalPaid - P;
         const savings = Math.max(0, currentTotalInt - newTotalInt);
