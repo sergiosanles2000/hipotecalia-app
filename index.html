@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Hipotecas y Calculadora de Amortización 2026 | Hipotecalia</title>
+  <meta name="description" content="Simula tu cuota hipotecaria mensual, compara ahorro en amortización anticipada reduciendo cuota o plazo y calcula impuestos de compraventa con exactitud.">
+  <link rel="canonical" href="https://sergiosanles2000.github.io/hipotecalia-app/index.html">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sergiosanles2000.github.io/hipotecalia-app/index.html">
+  <meta property="og:title" content="Simulador de Hipotecas y Calculadora de Amortización 2026 | Hipotecalia">
+  <meta property="og:description" content="Simula tu cuota hipotecaria mensual, compara ahorro en amortización anticipada reduciendo cuota o plazo y calcula impuestos de compraventa con exactitud.">
+  <meta property="og:site_name" content="Hipotecalia">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Simulador de Hipotecas y Calculadora de Amortización 2026">
+  <meta name="twitter:description" content="Simula tu cuota hipotecaria mensual, compara ahorro en amortización anticipada reduciendo cuota o plazo y calcula impuestos de compraventa con exactitud.">
+
+  <!-- Google AdSense Tag placeholder (Ready to activate upon publisher approval) -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script> -->
+
+  <link rel="stylesheet" href="style.css">
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Hipotecalia - Calculadora y Simulador de Hipotecas",
+  "url": "https://sergiosanles2000.github.io/hipotecalia-app/index.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "description": "Calculadora avanzada de hipotecas, simulador de amortización anticipada (cuota vs plazo) y desglose de gastos de compraventa en España."
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto dinero debo tener ahorrado para comprar una vivienda?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se recomienda contar con al menos un 30% a 32% del precio del inmueble: un 20% para la entrada no financiada y entre un 10% y 12% para gastos e impuestos (ITP/IVA, notaría, registro)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué gastos paga el banco y cuáles el cliente según la ley actual?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Desde la Ley 5/2019, el banco asume notaría, registro, gestoría y AJD de la hipoteca. El comprador solo abona la tasación y los gastos de compraventa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es la TAE y por qué es más importante que el TIN?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La TAE refleja el coste real anual del préstamo sumando el TIN, comisiones y seguros vinculados, permitiendo una comparación objetiva entre bancos."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <span>🏠</span>
+        <span>Hipotecalia</span>
+        <span class="brand-badge">Finanzas & Hipotecas</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#mortgage-form">Simulador Cuota</a></li><li><a href="#amort-form">Amortización Anticipada</a></li><li><a href="#propertyPrice">Gastos Compra</a></li><li><a href="#editorial-guide">Guía Experta</a></li>
+        <li>
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema de color">
+            🌓 Tema
+          </button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
+    
+        <div class="ad-slot-wrapper">
+          <span class="ad-label">Publicidad</span>
+          <div class="ad-slot ad-slot-leaderboard" data-slot="header-leaderboard">
+            <span>Espacio Publicitario Disponible &bull; Formato Leaderboard 728x90 / Responsive</span>
+          </div>
+        </div>
+        
+    
+    <!-- Hero Header -->
+    <section class="hero">
+      <span class="hero-badge">Simulador Financiero 2026 &bull; Actualizado Euribor</span>
+      <h1>Simulador y Calculadora Avanzada de Hipotecas</h1>
+      <p>Calcula tu cuota mensual, compara amortización anticipada (reducir cuota vs plazo) y estima al céntimo los gastos e impuestos de compraventa.</p>
+    </section>
+
+    <!-- Main Tool Grid -->
+    <div class="app-grid">
+      <!-- Calculator Inputs -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">1. Parámetros del Préstamo Hipotecario</h2>
+          <p class="card-subtitle">Introduce los datos de tu hipoteca para calcular cuota y cuadro de amortización.</p>
+        </div>
+        
+        <form id="mortgage-form" onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label class="form-label" for="loanAmount">
+              <span>Importe a financiar (€)</span>
+              <span class="form-help">Ej: 180.000 €</span>
+            </label>
+            <div class="input-group">
+              <input type="number" id="loanAmount" class="form-control" value="180000" min="10000" step="5000">
+              <span class="input-addon">€</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="interestRate">
+              <span>Tipo de interés anual (%)</span>
+              <span class="form-help">Tipo fijo o Euribor + diferencial</span>
+            </label>
+            <div class="input-group">
+              <input type="number" id="interestRate" class="form-control" value="2.90" min="0.1" max="15" step="0.05">
+              <span class="input-addon">%</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="loanTerm">
+              <span>Plazo de amortización (años)</span>
+              <span class="form-help">Máximo habitual: 30 años</span>
+            </label>
+            <div class="input-group">
+              <input type="number" id="loanTerm" class="form-control" value="25" min="5" max="40" step="1">
+              <span class="input-addon">Años</span>
+            </div>
+          </div>
+        </form>
+
+        <!-- In-Card Responsive Ad Slot -->
+        <div class="ad-slot-wrapper" style="margin: 1.5rem 0 0;">
+          <span class="ad-label">Publicidad</span>
+          <div class="ad-slot" data-slot="in-calc-banner">
+            <span>Espacio de Anuncio en Simulador &bull; Relevancia Financiera / Hipotecas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Results Summary -->
+      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="card-header">
+            <h2 class="card-title">Resumen de Cuota y Coste Total</h2>
+            <p class="card-subtitle">Cálculo basado en el sistema de amortización francés.</p>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-label">Cuota Mensual</div>
+              <div class="kpi-val" id="resMonthlyPayment">0,00 €</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Total Intereses</div>
+              <div class="kpi-val" style="color: var(--warning);" id="resTotalInterest">0,00 €</div>
+            </div>
+          </div>
+
+          <div class="kpi-card" style="margin-bottom: 1.5rem;">
+            <div class="kpi-label">Coste Total del Préstamo (Capital + Intereses)</div>
+            <div class="kpi-val highlight" id="resTotalCost">0,00 €</div>
+          </div>
+        </div>
+
+        <div class="callout" style="margin: 0;">
+          <strong>Consejo de experto:</strong> Una hipoteca no debería suponer más del 30% al 35% de los ingresos netos mensuales de la unidad familiar (ratio de endeudamiento bancario).
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Amortization Optimizer -->
+    <div class="card" style="margin-bottom: 3rem;">
+      <div class="card-header">
+        <h2 class="card-title">2. Simulador de Amortización Anticipada: ¿Reducir Cuota o Plazo?</h2>
+        <p class="card-subtitle">Comprueba exactamente cuánto dinero en intereses ahorras aportando capital extraordinario.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+        <div class="form-group">
+          <label class="form-label" for="amortExtra">Capital extraordinario a amortizar (€)</label>
+          <div class="input-group">
+            <input type="number" id="amortExtra" class="form-control" value="10000" min="500" step="500">
+            <span class="input-addon">€</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="amortType">Estrategia de amortización</label>
+          <select id="amortType" class="form-control">
+            <option value="plazo" selected>Reducir Plazo (Máximo ahorro de intereses)</option>
+            <option value="cuota">Reducir Cuota (Mayor desahogo mensual)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Ahorro Total de Intereses</div>
+          <div class="kpi-val highlight" id="amortSavings">0,00 €</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Nuevo Resultado</div>
+          <div class="kpi-val" style="font-size: 1.25rem;" id="amortNewVal">-</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Purchase Costs & Taxes Simulator -->
+    <div class="card" style="margin-bottom: 3rem;">
+      <div class="card-header">
+        <h2 class="card-title">3. Calculadora de Gastos e Impuestos de Compraventa</h2>
+        <p class="card-subtitle">Calcula la provisión de fondos necesaria entre ITP / IVA, Notaría, Registro y Gestoría.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+        <div class="form-group">
+          <label class="form-label" for="propertyPrice">Precio pactado de la vivienda (€)</label>
+          <div class="input-group">
+            <input type="number" id="propertyPrice" class="form-control" value="220000" min="20000" step="5000">
+            <span class="input-addon">€</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="propertyType">Tipo de vivienda</label>
+          <select id="propertyType" class="form-control">
+            <option value="usada" selected>Segunda Mano (ITP estimado ~8%)</option>
+            <option value="nueva">Obra Nueva (IVA 10% + AJD ~1%)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Impuestos (ITP / IVA+AJD)</div>
+          <div class="kpi-val" style="color: var(--danger);" id="costsTax">0,00 €</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Notaría Estimada</div>
+          <div class="kpi-val" id="costsNotary">0,00 €</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Registro Propiedad</div>
+          <div class="kpi-val" id="costsRegistry">0,00 €</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Total Gastos Adicionales</div>
+          <div class="kpi-val highlight" id="costsTotal">0,00 €</div>
+        </div>
+      </div>
+      <p class="form-help">Nota: Por ley (Ley de Crédito Inmobiliario 5/2019), el banco asume los gastos de la hipoteca (Notaría hipotecaria, Registro, Gestoría y AJD del préstamo). El comprador solo abona los gastos directos de la compraventa y la tasación tasadora.</p>
+    </div>
+
+    <!-- Section 4: Annual Amortization Table -->
+    <div class="card" style="margin-bottom: 3rem;">
+      <div class="card-header">
+        <h2 class="card-title">Cuadro de Amortización Anual Detallado</h2>
+        <p class="card-subtitle">Evolución anual de capital e intereses abonados a lo largo del préstamo.</p>
+      </div>
+      <div class="table-responsive">
+        <table class="data-table" id="amortTable">
+          <thead>
+            <tr>
+              <th>Periodo</th>
+              <th>Cuota Anual</th>
+              <th>Capital Amortizado</th>
+              <th>Intereses Abonados</th>
+              <th>Capital Pendiente</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populated dynamically via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 5: Authoritative Editorial Guide -->
+    <article class="editorial-section">
+      <h2>Guía Completa para Entender y Contratar una Hipoteca en 2026</h2>
+      
+      <p>Contratar un préstamo hipotecario es probablemente la decisión financiera más relevante en la vida de una persona o familia. Comprender cómo funciona el <strong>sistema de amortización francés</strong>, el impacto real de las subidas del Euribor y los costes asociados es crucial para evitar sobrecostes que pueden ascender a decenas de miles de euros.</p>
+
+      <h3>1. ¿Cómo se calcula la cuota mediante el Sistema Francés?</h3>
+      <p>En España y en la gran mayoría de países de la Unión Europea se utiliza de forma generalizada el sistema de amortización francés de cuota constante. Esto significa que mientras el tipo de interés no cambie, pagarás la misma cuota todos los meses. Sin embargo, la composición interna de esa cuota varía enormemente:</p>
+      <ul>
+        <li><strong>Durante los primeros años:</strong> La mayor parte de cada cuota se destina a pagar <em>intereses</em>, amortizando una porción pequeña de capital.</li>
+        <li><strong>En los últimos años:</strong> Ocurre exactamente lo opuesto: la inmensa mayoría de la cuota amortiza <em>capital puro</em> y los intereses devengados son residuales.</li>
+      </ul>
+      <p>Por este motivo matemático, amortizar anticipadamente en los primeros diez años del préstamo produce un ahorro de intereses infinitamente más contundente que hacerlo al final del ciclo.</p>
+
+      <h3>2. Tipo Fijo vs. Tipo Variable vs. Mixto: ¿Cuál elegir?</h3>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Modalidad</th>
+              <th>Ventajas Clave</th>
+              <th>Inconvenientes</th>
+              <th>Perfil Ideal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Hipoteca Fija</strong></td>
+              <td>Tranquilidad total; cuota idéntica durante 20-30 años sin depender del Euribor.</td>
+              <td>Tipos iniciales ligeramente más altos; comisiones por amortización o riesgo de interés.</td>
+              <td>Familias con ingresos estables que priorizan certidumbre absoluta.</td>
+            </tr>
+            <tr>
+              <td><strong>Hipoteca Variable</strong></td>
+              <td>Diferenciales muy reducidos (Euribor + 0,5% a 0,7%); menor coste en ciclos de bajada.</td>
+              <td>Riesgo de subida de tipos; volatilidad presupuestaria.</td>
+              <td>Perfiles con capacidad de ahorro para amortizar rápido o plazos cortos (<15 años).</td>
+            </tr>
+            <tr>
+              <td><strong>Hipoteca Mixta</strong></td>
+              <td>Periodo inicial fijo protegido (3 a 10 años) a tipo muy competitivo, seguido de variable.</td>
+              <td>Incertidumbre cuando expire el periodo fijo.</td>
+              <td>Quienes buscan pagar poco al inicio y planifican amortizar en 5-10 años.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>3. ¿Reducir Cuota o Reducir Plazo al Amortizar?</h3>
+      <p>Cuando dispones de un ahorro extra e ingresas capital extraordinario a tu hipoteca, el banco te dará a elegir entre dos opciones:</p>
+      <ol>
+        <li><strong>Reducir Plazo:</strong> Mantienes la misma cuota mensual que pagas hoy, pero el préstamo finaliza meses o años antes. <em>Financieramente es la opción más rentable</em>, ya que erradica periodos enteros de generación de intereses.</li>
+        <li><strong>Reducir Cuota:</strong> Mantienes el mismo número de años pactados, pero tu mensualidad se reduce. Es la alternativa óptima si tu prioridad es tener mayor liquidez y desahogo en tu presupuesto mensual corriente.</li>
+      </ol>
+    </article>
+
+    <!-- Mid-article Ad Slot -->
+    <div class="ad-slot-wrapper">
+      <span class="ad-label">Publicidad</span>
+      <div class="ad-slot ad-slot-leaderboard" data-slot="mid-guide-banner">
+        <span>Espacio Publicitario Contextual &bull; Entidades Financieras / Tasadoras Oficiales</span>
+      </div>
+    </div>
+
+    <!-- Section 6: Frequently Asked Questions (FAQ) -->
+    <section class="editorial-section">
+      <h2>Preguntas Frecuentes sobre Hipotecas (FAQ)</h2>
+      
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cuánto dinero debo tener ahorrado para comprar una vivienda?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Por norma general, las entidades bancarias conceden como máximo el <strong>80% del valor de tasación o compraventa</strong> (el menor de ambos). Por tanto, debes contar con el <strong>20% de entrada</strong>, más entre un <strong>10% y un 12% adicional</strong> para abonar los impuestos (ITP o IVA), aranceles de notaría, registro de la propiedad y gestoría. En total, se recomienda contar con al menos un <strong>30% al 32% del precio del inmueble</strong> ahorrado en fondos propios.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Qué gastos paga el banco y cuáles el cliente según la ley actual?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Desde la entrada en vigor de la Ley 5/2019 de Contratos de Crédito Inmobiliario, <strong>el banco asume:</strong> los aranceles notariales de la escritura de hipoteca, la inscripción registral de la hipoteca, la gestoría y el Impuesto sobre Actos Jurídicos Documentados (AJD) del préstamo. <strong>El comprador solo abona:</strong> la tasación oficial homologada de la vivienda (entre 300 € y 600 €) y las copias de la escritura que solicite.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Es legal que el banco me obligue a contratar seguros con ellos?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-answer">
+            <p>No. La ley prohíbe taxativamente las ventas vinculadas obligatorias salvo el seguro de daños sobre el inmueble. Los bancos pueden ofrecer <em>bonificaciones voluntarias</em> en el tipo de interés a cambio de domiciliar nómina, contratar seguro de hogar o seguro de vida, pero el cliente siempre tiene el derecho legal de contratar dichos seguros con cualquier aseguradora externa siempre que cumplan las coberturas mínimas requeridas.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Qué es la TAE y por qué es más importante que el TIN?</span>
+            <span>+</span>
+          </button>
+          <div class="faq-answer">
+            <p>El <strong>TIN (Tipo de Interés Nominal)</strong> es simplemente el porcentaje que cobra el banco por prestarte el dinero. La <strong>TAE (Tasa Anual Equivalente)</strong>, en cambio, incluye el TIN más todas las comisiones de apertura, gastos asociados y el coste de todos los productos vinculados (seguros obligatorios o bonificados, tarjetas). La TAE refleja el <em>coste real global de la hipoteca</em> y es la única cifra que permite comparar ofertas bancarias de forma homogénea.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Hipotecalia</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">Simulador avanzado de hipotecas, cuota mensual, amortización y gastos de compraventa.</p>
+          <p class="form-help">&copy; 2026 Hipotecalia. Todos los derechos reservados.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Herramientas</h4>
+          <ul class="footer-links">
+            <li><a href="#mortgage-form">Simulador Cuota</a></li><li><a href="#amort-form">Amortización Anticipada</a></li><li><a href="#propertyPrice">Gastos Compra</a></li><li><a href="#editorial-guide">Guía Experta</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal & Privacidad</h4>
+          <ul class="footer-links">
+            <li><a href="privacidad.html">Política de Privacidad</a></li>
+            <li><a href="terminos.html">Términos de Uso</a></li>
+            <li><a href="cookies.html">Política de Cookies</a></li>
+            <li><a href="aviso-legal.html">Aviso Legal (LSSI)</a></li>
+            <li><a href="contacto.html">Contacto y Soporte</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Herramienta divulgativa independiente. Los resultados son estimaciones basadas en normativas públicas vigentes.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GDPR / ePrivacy Cookie Consent Banner -->
+  <div id="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-title">
+    <h4 id="cookie-title" style="margin-bottom: 0.5rem; font-size: 1rem;">Privacidad y Cookies</h4>
+    <p>Utilizamos cookies propias y de terceros para optimizar la experiencia de navegación, analizar el tráfico y personalizar la publicidad conforme a nuestras <a href="privacidad.html">políticas</a>.</p>
+    <div class="cookie-actions">
+      <button id="cookie-accept" class="btn-cookie btn-cookie-accept">Aceptar todas</button>
+      <button id="cookie-reject" class="btn-cookie">Rechazar no esenciales</button>
+    </div>
+  </div>
+
+  <script src="common.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
